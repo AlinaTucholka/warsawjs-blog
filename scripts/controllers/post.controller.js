@@ -5,9 +5,13 @@ import {PostComponent} from '../components/post.component.js';
 let $page = document.getElementById('page');
 
 routie('post/:id', controller);
-
-export function controller(id){
-  PostService.get(id).then(post=>{
-      PostComponent.render({post:post}, $page)
-  });
+export function controller(id) {
+    PostService.get(id).then(post => {
+        return PostService.getComments(post.id).then(comments => {
+            post.comments = comments;
+            return post;
+        });
+    }).then(post => {
+        PostComponent.render({post}, $page)
+    })
 }

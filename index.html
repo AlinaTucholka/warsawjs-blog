@@ -73,6 +73,19 @@
         </h5>
 
             <p>{{post.text}}</p>
+               <ul class="collection with-header">
+            <li class="collection-header">
+                <h4>Recent comments</h4></li>
+            {{#post.comments}}
+            <li class="collection-item avatar">
+                <a href="#comment/{{id}}">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <span class="title">{{body}}</span>
+                </a>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            {{/post.comments}}
+        </ul>
         </article>
     </script>
 
@@ -99,6 +112,23 @@
 
     </script>
 
+       <!-- COMMENTS LIST -->
+    <script id="template-comments-list" type="text/html" class="container">
+        <ul class="collection with-header">
+            <li class="collection-header">
+                <h4>Recent comments</h4></li>
+            {{#comments}}
+            <li class="collection-item avatar">
+                <a href="#comment/{{id}}">
+                    <i class="material-icons circle green">insert_chart</i>
+                    <span class="title">{{body}}</span>
+                </a>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            {{/comments}}
+        </ul>
+    </script>
+   
     <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.41/system.js"></script>
     <script>

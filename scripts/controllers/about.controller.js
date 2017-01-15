@@ -6,7 +6,9 @@ let $about = document.getElementById('template-about').innerHTML;
 
 routie('o-mnie', controller);
 
-export function controller(){
-$page.innerHTML = "";
-$page.innerHTML = Mustache.render($about, {name: 'moje imię'});
+export function controller() {
+    $page.innerHTML = "";
+    $page.innerHTML = Mustache.render($about, {
+        name: 'moje imię'
+    });
 }

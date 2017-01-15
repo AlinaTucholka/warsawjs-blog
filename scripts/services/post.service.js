@@ -32,4 +32,13 @@ export class PostService {
             return posts;
         });
     }
+
+    static getComments(id) {
+           return $.get('/comments?postId=' + id).then(comments => {
+            return comments;
+        });
+    }
+    static putComments() {
+        return $.post('/comments', data);
+    }
 }
