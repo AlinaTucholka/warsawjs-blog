@@ -1,6 +1,5 @@
 import {PostListComponent} from '../components/post-list.component.js';
 
-
 export class AboutComponent extends PostListComponent {
 
     template() {

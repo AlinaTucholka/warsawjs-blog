@@ -1,14 +1,13 @@
 import routie from 'libs/routie.js';
 import {PostService} from '../services/post.service.js';
-import {PostListComponent} from '../components/post-list.component.js';
+import {PostComponent} from '../components/post.component.js';
 
 let $page = document.getElementById('page');
 
-//routie('', controller);
+routie('post/:id', controller);
 
-//export class PostsComponent extends PostListComponent {
-//    
-//    template(){
-//        return document.querySelector('#template-post').innerHTML;
-//    }
-//}
+export function controller(id){
+  PostService.get(id).then(post=>{
+      PostComponent.render({post:post}, $page)
+  });
+}

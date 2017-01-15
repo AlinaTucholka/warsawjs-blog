@@ -9,7 +9,14 @@ import {PostListComponent} from '../components/post-list.component.js';
 let $page = document.getElementById('page');
 
 routie('', controller);
+//
+//export function controller() {
+//        PostListComponent.render({posts:[]}, $page)
+//}
 
 export function controller() {
-        PostListComponent.render({posts:[]}, $page)
+    PostService.list().then(posts=>{
+              console.log('posty z serwisu', posts);
+        PostListComponent.render({posts:posts}, $page)
+    })
 }
