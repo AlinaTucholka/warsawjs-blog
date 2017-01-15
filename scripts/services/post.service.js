@@ -3,33 +3,33 @@
  */
 
 let posts = [
-    {id: 1, title: 'pierwszy post', text: 'tresc posta'},
-    {id: 2, title: 'drugi post', text: 'tresc posta drugiego'}
+    {
+        id: 1,
+        title: 'pierwszy post',
+        text: 'tresc posta'
+    },
+    {
+        id: 2,
+        title: 'drugi post',
+        text: 'tresc posta drugiego'
+    }
 ]
+
 export class PostService {
 
     static list() {
-        return new Promise((resolve, reject) => {
-            resolve(posts);
-        })
+        return $.get('/posts').then(posts => {
+            return posts;
+        });
     }
 
     static create(data) {
-        data.id = posts.length+1;
-        posts.push(data);
-        return new Promise((resolve, reject) => {
-            resolve(data);
-        })
+        return $.post('/posts', data);
     }
 
-     static get(id) {
-        return new Promise((resolve, reject) => {
-            for(let post of posts) {
-                if(post.id === parseInt(id)) {
-                    return resolve(post);
-                }
-            }
-            reject('not found');
-        })
+    static get(id) {
+        return $.get('/posts/' + id).then(posts => {
+            return posts;
+        });
     }
 }
